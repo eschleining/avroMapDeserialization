@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "RecordWithMapField",
+  "namespace": "com.schleining.avro",
+  "fields": [
+    {
+      "name": "mapField",
+      "type": {
+        "type": "map",
+        "values": "string"
+      }
+    }
+  ]
+}
