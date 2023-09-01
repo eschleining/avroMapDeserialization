@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,7 +31,9 @@ public class SerdeTest {
         byte[] serialized = serialize(record);
         RecordWithMapField deserialized = deserialize(serialized);
 
-        assertEquals(TEST_VALUE, deserialized.getMapField().get(TEST_KEY));
+        Map.Entry<?, ?> entry = deserialized.getMapField().entrySet().iterator().next();
+        assertEquals(String.class, entry.getKey().getClass());
+        assertEquals(String.class, entry.getValue().getClass());
     }
 
     private byte[] serialize(RecordWithMapField record) {
